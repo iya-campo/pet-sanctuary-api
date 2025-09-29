@@ -13,14 +13,57 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+
+  posts       Post[]
+  adoptedPets Pet[]  @relation("AdoptedPets")
+}
+
+// ask dani if this model is necessary
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  type      PostType
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  pet   Pet @relation(fields: [petId], references: [id])
+  petId Int @unique
+}
+
+// pet model can also be the "post"
 model Pet {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   name     String
   desc     String
-  gender   String
-  species  String
+  gender   Gender
+  species  Species
   breed    String
-  age      Int
-  ownerId  Int
-  imageUrl String
+  age      Int?
+  imageUrl String?
+
+  post Post?
+
+  adopter   User? @relation("AdoptedPets", fields: [adopterId], references: [id])
+  adopterId Int?
+}
+
+enum PostType {
+  LOST
+  FOUND
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Species {
+  DOG
+  CAT
+  BIRD
 }
