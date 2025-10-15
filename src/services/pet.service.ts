@@ -4,12 +4,14 @@ async function create(data) {
   return prisma.pet.create({ 
     data: { 
         name: data.name, 
+        type: data.type,
         desc: data.desc, 
         gender: data.gender, 
         species: data.species, 
         breed: data.breed, 
         age: data.age, 
-        imageUrl: data.imageUrl 
+        imageUrl: data.imageUrl,
+        userId: data.userId
     },
    });
 }
