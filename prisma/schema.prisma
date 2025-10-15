@@ -14,30 +14,22 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id                Int       @id @default(autoincrement())
+  createdAt         DateTime  @default(now())
+  email             String    @unique
+  password          String
+  isEmailVerified   Boolean   @default(false)
+  verificationToken String?  
 
-  posts       Post[]
+  pets        Pet[]
   adoptedPets Pet[]  @relation("AdoptedPets")
 }
 
-// ask dani if this model is necessary
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  type      PostType
-
-  user   User @relation(fields: [userId], references: [id])
-  userId Int
-
-  pet   Pet @relation(fields: [petId], references: [id])
-  petId Int @unique
-}
-
-// pet model can also be the "post"
 model Pet {
   id       Int     @id @default(autoincrement())
+  createdAt DateTime @default(now())
+
+  type     Type
   name     String
   desc     String
   gender   Gender
@@ -46,13 +38,14 @@ model Pet {
   age      Int?
   imageUrl String?
 
-  post Post?
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
 
   adopter   User? @relation("AdoptedPets", fields: [adopterId], references: [id])
   adopterId Int?
 }
 
-enum PostType {
+enum Type {
   LOST
   FOUND
 }
