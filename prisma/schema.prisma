@@ -14,28 +14,39 @@ datasource db {
 }
 
 model User {
-  id                Int       @id @default(autoincrement())
-  createdAt         DateTime  @default(now())
-  email             String    @unique
+  id                Int      @id @default(autoincrement())
+  createdAt         DateTime @default(now())
+  email             String   @unique
   password          String
-  isEmailVerified   Boolean   @default(false)
-  verificationToken String?  
+  isEmailVerified   Boolean  @default(false)
+  verificationToken String?
+
+  name              String  @default("")
+  mobile            String  @default("")
+  location          String  @default("")
+  bio               String?
+  imgUrl            String?
 
   pets        Pet[]
-  adoptedPets Pet[]  @relation("AdoptedPets")
+  adoptedPets Pet[]     @relation("AdoptedPets")
+
+  messages Message[] @relation("UserMessages")
+  sentMessages Message[] @relation("SenderMessages")
 }
 
 model Pet {
-  id       Int     @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
 
   type     Type
-  name     String
-  desc     String
+  name     String  @default("")
+  desc     String  @default("")
   gender   Gender
   species  Species
-  breed    String
+  breed    String  @default("")
+  coat     String  @default("")
   age      Int?
+  location String?
   imageUrl String?
 
   user   User @relation(fields: [userId], references: [id])
@@ -45,9 +56,23 @@ model Pet {
   adopterId Int?
 }
 
+model Message {
+  id         Int      @id @default(autoincrement())
+  content    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  senderId   Int
+  receiverId Int
+  sender     User     @relation("SenderMessages", fields: [senderId], references: [id])
+  receiver   User     @relation("UserMessages", fields: [receiverId], references: [id])
+}
+
 enum Type {
   LOST
   FOUND
+  FOR_ADOPTION
+  ADOPTED
+  CLOSED
 }
 
 enum Gender {
@@ -59,4 +84,5 @@ enum Species {
   DOG
   CAT
   BIRD
+  OTHERS
 }
