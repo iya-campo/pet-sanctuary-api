@@ -2,9 +2,9 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import authRoutes from "./routes/auth.routes";
-import petRoutes from "../routes/pet.routes";
-import userRoutes from "../routes/user.routes";
-import messageRoutes from "../routes/message.routes";
+import petRoutes from "./routes/pet.routes";
+import userRoutes from "./routes/user.routes";
+import messageRoutes from "./routes/message.routes";
 import { errorHandler } from "./middlewares/error.middleware";
 
 const express = require("express");
