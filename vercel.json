@@ -5,13 +5,12 @@
       "src": "src/index.ts",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["src/**/*.ts", "tsconfig.json"]
-      },
-      "env": {
-        "PRISMA_GENERATE": "true"
-      },
-      "commands": {
-        "build": "prisma generate"
+        "includeFiles": [
+          "src/**/*.ts",
+          "tsconfig.json",
+          "prisma/**/*.schema",
+          "node_modules/.prisma/**/*"
+        ]
       }
     }
   ],
