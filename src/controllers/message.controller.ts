@@ -1,4 +1,4 @@
-import { createMessage, getLastMessage, getMessages } from '@/services/message.service';
+import { createMessage, getLastMessage, getMessages } from '../services/message.service';
 import { Request, Response } from 'express';
 
 // Create a new message

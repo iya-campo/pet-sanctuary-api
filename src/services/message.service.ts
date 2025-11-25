@@ -1,4 +1,4 @@
-import prisma from "@/config/db";
+import prisma from "../config/db";
 
 // Create a new message
 export const createMessage = async (senderId: number, receiverId: number, content: string) => {

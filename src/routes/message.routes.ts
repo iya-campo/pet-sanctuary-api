@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-import messageController from "@/controllers/message.controller";
+import messageController from "../controllers/message.controller";
 
 router.post('/', messageController.sendMessage);
 router.get('/:userId/:otherUserId', messageController.getMessagesByUserId);

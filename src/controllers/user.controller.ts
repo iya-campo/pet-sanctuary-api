@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { create, getById, update, remove, getByEmail, fetch } from '@/services/user.service';
+import { create, getById, update, remove, getByEmail, fetch } from '../services/user.service';
 
 // Fetch Users
 const fetchUsers = async (req: Request, res: Response): Promise<void> => {

@@ -1,6 +1,6 @@
-import prisma from '@/config/db';
+import prisma from '../config/db';
 import { User } from '@prisma/client';
-import { hashPassword } from "@/utils/passwordUtils";
+import { hashPassword } from "../utils/passwordUtils";
 
 // Get Users
 export const fetch = async (): Promise<User[]> => {

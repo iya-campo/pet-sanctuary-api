@@ -1,8 +1,8 @@
-import prisma from "@/config/db";
+import prisma from "../config/db";
 import bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
-import { signToken } from '@/utils/jwtUtils';
-import { sendVerificationEmail } from '@/utils/emailUtils';
+import { signToken } from '../utils/jwtUtils';
+import { sendVerificationEmail } from '../utils/emailUtils';
 
 export const authenticateUser = async (email: string, password: string) => {
   const user = await prisma.user.findUnique({ where: { email } });

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-import petController from "@/controllers/pet.controller";
+import petController from "../controllers/pet.controller";
 
 router.get('/', petController.fetchPets); // List all pets with optional filters
 router.get('/:userId', petController.fetchUserPets); // List user's pets

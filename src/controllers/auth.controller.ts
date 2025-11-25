@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { authenticateUser, registerUser, verifyEmail } from '@/services/auth.service';
-import { loginSchema } from '@/utils/validatorUtils';
+import { authenticateUser, registerUser, verifyEmail } from '../services/auth.service';
+import { loginSchema } from '../utils/validatorUtils';
 
 const login = async (req: Request, res: Response) => {
   const { email, password } = loginSchema.parse(req.body);

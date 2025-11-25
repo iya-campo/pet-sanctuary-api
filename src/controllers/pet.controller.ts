@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { adopt, create, fetch, fetchByUser, remove, update } from '@/services/pet.service';
+import { adopt, create, fetch, fetchByUser, remove, update } from '../services/pet.service';
 
 const fetchPets = async (req: Request, res: Response): Promise<void> => {
   try {

@@ -1,4 +1,4 @@
-import prisma from "@/config/db";
+import prisma from "../config/db";
 import { Gender, Pet, Species, Type } from "@prisma/client";
 
 // List all pets with optional filters

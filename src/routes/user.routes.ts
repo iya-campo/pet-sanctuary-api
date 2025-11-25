@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-import userController from '@/controllers/user.controller';
-import { verify } from '@/middlewares/auth.middleware';
+import userController from '../controllers/user.controller';
+import { verify } from '../middlewares/auth.middleware';
 
 router.get('/', userController.fetchUsers);
 router.post('/', userController.createUser);
