@@ -1,4 +1,4 @@
-import prisma from "../config/db";
+import prisma from "config/db";
 import bcrypt from 'bcrypt';
 import * as crypto from 'crypto';
 import { signToken } from '../utils/jwtUtils';
