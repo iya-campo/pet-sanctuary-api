@@ -7,6 +7,8 @@ import userRoutes from "./routes/user.routes";
 import messageRoutes from "./routes/message.routes";
 import { errorHandler } from "./middlewares/error.middleware";
 
+require('dotenv').config();
+
 const express = require("express");
 const app = express();
 app.use(express.json());
