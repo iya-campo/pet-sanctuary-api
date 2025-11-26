@@ -7,7 +7,6 @@
     "dev": "ts-node -r tsconfig-paths/register src/app.ts",
     "start": "ts-node -r tsconfig-paths/register src/app.ts",
     "build": "prisma generate",
-    "prisma:generate": "prisma generate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
