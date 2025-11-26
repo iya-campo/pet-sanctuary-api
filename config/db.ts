@@ -4,7 +4,7 @@ const { join } = require('path');
 
 let prisma;
 
-// Only do the copy in production (Vercel)
+// Only do the copy for Vercel deployment
 if (process.env.NODE_ENV === 'production') {
   const sourceDb = join(process.cwd(), 'prisma', 'db', 'pets.db');
   const targetDb = '/tmp/pets.db';
