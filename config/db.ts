@@ -6,7 +6,7 @@ let prisma;
 
 // Only do the copy in production (Vercel)
 if (process.env.NODE_ENV === 'production') {
-  const sourceDb = join(process.cwd(), 'db', 'pets.db');
+  const sourceDb = join(process.cwd(), 'prisma', 'db', 'pets.db');
   const targetDb = '/tmp/pets.db';
   
   // Copy the database to /tmp if not already there
