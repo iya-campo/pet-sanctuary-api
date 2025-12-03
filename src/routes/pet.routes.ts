@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 import petController from "../controllers/pet.controller";
-import { uploadFiles } from "@/utils/multerUtils";
+import { uploadFiles } from "../utils/multerUtils";
 
 router.get('/', petController.fetchPets); // List all pets with optional filters
 router.get('/:userId', petController.fetchUserPets); // List user's pets
