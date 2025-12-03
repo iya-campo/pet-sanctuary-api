@@ -47,7 +47,7 @@ model Pet {
   coat     String  @default("")
   age      Int?
   location String?
-  imageUrl String?
+  imageUrls String
 
   user   User @relation(fields: [userId], references: [id])
   userId Int

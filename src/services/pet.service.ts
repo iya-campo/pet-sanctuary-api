@@ -74,7 +74,7 @@ export const create = async (data: {
   breed: string;
   age?: number;
   location?: string;
-  imageUrl?: string;
+  imageUrls?: string;
   userId: number;
 }): Promise<Pet> => {
   return prisma.pet.create({

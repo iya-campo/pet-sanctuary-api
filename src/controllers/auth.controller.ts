@@ -11,7 +11,7 @@ const login = async (req: Request, res: Response) => {
     res.cookie('token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict',
+      sameSite: 'strict',
       maxAge: 3600000, // 1 hour
     });
 
@@ -59,7 +59,7 @@ const verify = async (req: Request, res: Response, next: NextFunction) => {
   const { token } = req.query;
   
   try {
-    const user = await verifyEmail(token);
+    const user = await verifyEmail(token as string);
     return res.status(201).json({ user, message: 'Email verification successful.' });
   } catch (error) {
     if (error.message === 'Invalid or expired token') {

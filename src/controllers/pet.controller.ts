@@ -39,7 +39,19 @@ const fetchUserPets = async (req: Request, res: Response): Promise<void> => {
 
 const createPet = async (req: Request, res: Response): Promise<void> => {
   try {
-    const petData = req.body;
+    const petData = {
+      name: req.body.name,
+      type: req.body.type,
+      desc: req.body.desc,
+      gender: req.body.gender,
+      species: req.body.species,
+      breed: req.body.breed,
+      age: req.body.age ? parseInt(req.body.age, 10) : undefined,
+      location: req.body.location,
+      userId: req.body.userId ? parseInt(req.body.userId, 10) : undefined,
+      imageUrls: req.files ? (req.files as Express.Multer.File[]).map(file => `/uploads/${file.filename}`).join(',') : '',
+    };
+    
     const pet = await create(petData);
     res.status(201).json(pet);
   } catch (error) {

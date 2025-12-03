@@ -1,3 +1,4 @@
+import path from 'path';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -12,13 +13,17 @@ require('dotenv').config();
 const express = require("express");
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
 
 app.use(cors({
   origin: process.env.FRONTEND_URL,
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+app.use('/uploads', express.static(path.resolve(__dirname, '../public/uploads')));
 
 app.use("/auth", authRoutes);
 app.use("/pets", petRoutes);
